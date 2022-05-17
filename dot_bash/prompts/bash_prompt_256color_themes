@@ -1,0 +1,115 @@
+#!/usr/bin/env bash
+#
+# Themes for a 256color prompt
+
+# Get color names
+if [[ -f ~/.dotfiles/bash/prompts/bash_prompt_256color_colors ]]; then
+    . ~/.dotfiles/bash/prompts/bash_prompt_256color_colors
+fi
+
+__set_ps1_theme() { theme_function="__$1"; ${theme_function}; }
+
+__mercedes() {
+    export ExitCode_BG="none";
+    export ExitCode_FG="${RED}";
+    export ExitCode_Bold=true;
+
+    export HostName_BG="159";
+    export HostName_FG="${GREENBLUE}";
+    export HostName_Bold=false;
+
+    export UserName_BG="${GREENBLUE}";
+    export UserName_FG="${WHITE}";
+    export UserName_Bold=false;
+
+    export CondaEnv_BG="${LIGHTGREEN1}";
+    export CondaEnv_FG="${WHITE}";
+    export CondaEnv_Bold=true;
+
+    export Time_BG="${DARKGRAY6}";
+    export Time_FG="${LIGHTGRAY1}";
+    export Time_Bold=false;
+
+    export Git_BG="${DARKGRAY8}";
+    export Git_FG="${LIGHTGRAY3}";
+    export Git_FG2="${LIGHTGRAY3}";
+    export Git_Bold=true;
+
+    export WorkDir_BG="${DARKGRAY6}";
+    export WorkDir_FG="37";
+    export WorkDir_Bold=true;
+
+    export UserPrompt_BG="none";
+    export UserPrompt_FG="${DARKGRAY8}";
+    export UserPrompt_Bold=true;
+}
+
+__theme1() {
+    export ExitCode_BG="none";
+    export ExitCode_FG="${RED}";
+    export ExitCode_Bold=true;
+
+    export HostName_BG="${DARKCYAN}";
+    export HostName_FG="${WHITE}";
+    export HostName_Bold=false;
+
+    export UserName_BG="${CYAN}";
+    export UserName_FG="${WHITE}";
+    export UserName_Bold=false;
+
+    export CondaEnv_BG="${LIGHTVIOLET}";
+    export CondaEnv_FG="${WHITE}";
+    export CondaEnv_Bold=true;
+
+    export Time_BG="${GRAY3}";
+    export Time_FG="${WHITE}";
+    export Time_Bold=false;
+
+    export WorkDir_BG="${LIGHTGRAY5}";
+    export WorkDir_FG="${DARKGRAY6}";
+    export WorkDir_Bold=true;
+
+    export Git_BG="${WHITE}";
+    export Git_FG="${LIGHTRED}";
+    export Git_FG2="${CYAN}";
+    export Git_Bold=true;
+
+    export UserPrompt_BG="none";
+    export UserPrompt_FG="${LIGHTBLUE}";
+    export UserPrompt_Bold=true;
+}
+
+__theme2() {
+    export ExitCode_BG="none";
+    export ExitCode_FG="${RED}";
+    export ExitCode_Bold=true;
+
+    export HostName_BG="${DARKGREEN}";
+    export HostName_FG="${LIGHTGREEN2}";
+    export HostName_Bold=false;
+
+    export UserName_BG="${GREENBLUE}";
+    export UserName_FG="${WHITE}";
+    export UserName_Bold=false;
+
+    export CondaEnv_BG="${LIGHTGREEN1}";
+    export CondaEnv_FG="${WHITE}";
+    export CondaEnv_Bold=true;
+
+    export Time_BG="${LIGHTGRAY5}";
+    export Time_FG="${DARKGRAY8}";
+    export Time_Bold=false;
+
+    export WorkDir_BG="${GRAY3}";
+    export WorkDir_FG="${LIGHTGRAY3}";
+    export WorkDir_Bold=true;
+
+    export Git_BG="${WHITE}";
+    export Git_FG="${LIGHTRED}";
+    export Git_FG2="${CYAN}";
+    export Git_Bold=true;
+
+    export UserPrompt_BG="none";
+    export UserPrompt_FG="${LIGHTGREEN1}";
+    export UserPrompt_Bold=true;
+}

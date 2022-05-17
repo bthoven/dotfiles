@@ -1,0 +1,59 @@
+#!/usr/bin/env bash
+#
+# ~/.dotfiles/bash/bash_aliases
+# Load user-defined aliases
+
+COLORED_OUTPUT='always'
+
+
+######################################
+### Redefinitions of some commands ###
+######################################
+alias cp="cp -i"
+alias diff='diff --color=${COLORED_OUTPUT}'
+alias egrep='egrep -n --color=${COLORED_OUTPUT}'
+alias fgrep='fgrep -n --color=${COLORED_OUTPUT}'
+alias gpg="gpg --no-symkey-cache"
+alias grep='grep -n --color=${COLORED_OUTPUT}'
+#alias ls='ls --si --color=${COLORED_OUTPUT}'
+alias ls='exa --group-directories-first --color=${COLORED_OUTPUT}'
+alias mv="mv -i"
+alias nano="nano -l"
+alias ping="ping -c1"
+# alias r="radian"
+alias radeontop="radeontop -c -T"
+alias rm="rm -i"
+alias sudo="sudo "  # Allow aliases to be with sudo
+
+
+#############################
+### User specific aliases ###
+#############################
+alias ..="cd .."
+alias ...="cd ../.."
+alias ~="cd ~"
+alias -- -="cd -"
+alias colablocal="jupyter-lab --NotebookApp.allow_origin='https://colab.research.google.com' --port=8888 --NotebookApp.port_retries=0"
+alias conda-act="conda activate"
+alias conda-deact="conda deactivate"
+alias dfshort="df -Ht ext4"
+alias exe="chmod u+x"
+alias fm="free -htw --si"
+alias h="history"
+alias hist="history | grep"
+alias ir="ps aux | head -n 1; ps aux | grep"
+#alias l='ls -CF --si --color=${COLORED_OUTPUT}'
+alias l='exa -F --group-directories-first --color=${COLORED_OUTPUT}'
+#alias la='ls -AF --si --color=${COLORED_OUTPUT}'
+alias la='exa -aF --group-directories-first --color=${COLORED_OUTPUT}'
+#alias ll='ls -hFl --si --color=${COLORED_OUTPUT}'
+alias ll='exa -FhlT -L1 --group-directories-first --git --color=${COLORED_OUTPUT}'
+#alias lla='ls -AhFl --si --color=${COLORED_OUTPUT}'
+alias lla='exa -aFhlT -L1 --group-directories-first --git --color=${COLORED_OUTPUT}'
+alias lns="ln -s"
+alias ltt='exa -ls time --color=${COLORED_OUTPUT} | tail'
+# alias myip="ip a s eno1 | grep inet | head -n 1 | cut -d ' ' -f6"
+alias myip="curl ipinfo.io/ip; echo"
+#alias optirun="optirun -vv -b virtualgl -c jpeg"
+alias paths='echo ${PATH} | tr ":" "\n"'
+alias suc="su -c"

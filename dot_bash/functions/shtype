@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#
+# ~/.bash/functions/shtype
+
+shtype() {
+    case "$-" in
+        (*i*) echo "$-: This shell is $(tput bold)interactive$(tput sgr0)";;
+        (*) echo "$-: This shell is $(tput bold)not interactive$(tput sgr0)";;
+    esac
+}

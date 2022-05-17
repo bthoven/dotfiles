@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+#
+# ~/.dotfiles/bash/bash_dotfiles
+# Load dotfiles
+
+load_dotfiles() {
+    declare -a files=(
+        ~/.bash_profile.local          # Local/private settings not under version control (e.g. git credentials)
+        ~/.dotfiles/bash/bash_options  # Options
+        ~/.dotfiles/bash/bash_aliases  # Aliases
+        ~/.dotfiles/bash/functions/*   # Functions
+        ~/.dotfiles/bash/bash_user     # User environment
+        ~/.dotfiles/bash/bash_prompt   # Custom bash prompt
+        ~/.dotfiles/bash/bash_paths    # Path modifications
+    )
+
+    # If these files are readable, source them
+    for index in ${!files[*]}; do
+        test -r ${files[$index]} && . ${files[$index]}
+    done
+}
+
+# Sourcing `bash_exports` before the other Bash files due to its double
+# sourcing prevention method. Tip from https://unix.stackexchange.com/a/425759.
+if [[ ${BASH_EXPORTS_SOURCED} != yes && -f ~/.dotfiles/bash/bash_exports ]]
+then
+    . ~/.dotfiles/bash/bash_exports  # Exports
+fi
+
+load_dotfiles
+unset load_dotfiles

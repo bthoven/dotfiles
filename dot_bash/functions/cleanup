@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# ~/.bash/functions/cleanup
+#
+# Source:
+#   https://github.com/necolas/dotfiles/blob/master/shell/functions/cleanup
+
+# Recursively delete files that match a certain pattern
+# (by default delete all `.DS_Store` files)
+cleanup() {
+    local q="${1:-*.DS_Store}"
+    find . -type f -name "$q" -ls -delete
+}

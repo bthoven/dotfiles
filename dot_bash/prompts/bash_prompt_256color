@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+#
+# Prompt setup for bash.
+# Source: https://github.com/mkasberg/dotfiles/blob/30875c33c7b569204e13e0022e0a56f7fb4f2def/dot_bashrc
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+case "${TERM}" in
+    xterm-color|*-256color) color_prompt=yes;;
+    *) color_prompt=yes;;
+esac
+
+# uncomment for a colored prompt, if the terminal has the capability; turned
+# off by default to not distract the user: the focus in a terminal window
+# should be on the output of commands, not on the prompt
+# force_color_prompt=yes
+
+if [ -n "${force_color_prompt}" ]; then
+    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+        # We have color support; assume it's compliant with Ecma-48
+        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+        # a case would tend to support setf rather than setaf.)
+    	color_prompt=yes
+    else
+	    color_prompt=
+    fi
+fi
+
+# shellcheck source=/home/thoven/.bash/prompts/bash_prompt_8color
+# shellcheck source=/home/thoven/.bash/prompts/bash_prompt_256color_ps1.sh
+if [ "${color_prompt}" = yes ]; then
+    # Read custom prompt, apply it to PS1.
+    . ~/.dotfiles/bash/prompts/bash_prompt_256color_ps1.sh
+    PS0="\n${PS0}"
+    PS1="$(__mkps1 mercedes '>' twolines)"  # Add 'twolines' for a prompt below PS1 line
+else
+    . ~/.dotfiles/bash/prompts/bash_prompt_8color
+fi
+unset color_prompt force_color_prompt
+
+# More prompt symbols
+# 🮥  # Big Angle symbol
+# Þ
+# §
+# →
+# þ
+# »

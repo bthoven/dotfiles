@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#
+# ~/.dotfiles/bash/bash_profile
+
+test -f ~/.dotfiles/bash/bashrc && . ~/.dotfiles/bash/bashrc

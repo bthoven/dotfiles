@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# ~/.dotfiles/bash/bash_user
+# User specific environment
+
+
+###############################
+### Anaconda initialization ###
+###############################
+
+anaconda_path="${HOME}/Programs/miniconda3"
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if ! __conda_setup="$("${anaconda_path}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"; then
+    eval "${__conda_setup}"
+else
+    if [ -f "${anaconda_path}/etc/profile.d/conda.sh" ]; then
+        . "${anaconda_path}/etc/profile.d/conda.sh"
+    else
+        export PATH="${anaconda_path}/bin:${PATH}"
+    fi
+fi
+unset __conda_setup anaconda_path
+# <<< conda initialize <<<
+
+
+###########################
+### Added by Travis gem ###
+###########################
+
+[[ ! -s ~/.travis/travis.sh ]] || . ~/.travis/travis.sh

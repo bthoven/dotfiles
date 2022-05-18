@@ -121,7 +121,7 @@ __mkps1_field() {
 __mkps1() {
     local theme_name=$1
     local prompt_symbol=$2
-    . ~/.dotfiles/bash/prompts/bash_prompt_256color_themes
+    . ~/.bash/prompts/bash_prompt_256color_themes
     __set_ps1_theme ${theme_name}
     local ps1="\n";
     ps1+="$(__mkps1_field -s exitcode -b ${ExitCode_BG} -f ${ExitCode_FG} -o ${ExitCode_Bold})";

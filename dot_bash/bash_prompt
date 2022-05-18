@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 #
-# ~/.dotfiles/bash/bash_prompt
+# ~/.bash/bash_prompt
 # User specific prompt style
 
 # Set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
     xterm-color|*-256color)
-        . ~/.dotfiles/bash/prompts/bash_prompt_256color
+        . ~/.bash/prompts/bash_prompt_256color
         ;;
     *)
-        . ~/.dotfiles/bash/prompts/bash_prompt_8color
+        . ~/.bash/prompts/bash_prompt_8color
         ;;
 esac

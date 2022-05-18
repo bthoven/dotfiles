@@ -29,11 +29,11 @@ fi
 # shellcheck source=/home/thoven/.bash/prompts/bash_prompt_256color_ps1.sh
 if [ "${color_prompt}" = yes ]; then
     # Read custom prompt, apply it to PS1.
-    . ~/.dotfiles/bash/prompts/bash_prompt_256color_ps1.sh
+    . ~/.bash/prompts/bash_prompt_256color_ps1.sh
     PS0="\n${PS0}"
     PS1="$(__mkps1 mercedes '>' twolines)"  # Add 'twolines' for a prompt below PS1 line
 else
-    . ~/.dotfiles/bash/prompts/bash_prompt_8color
+    . ~/.bash/prompts/bash_prompt_8color
 fi
 unset color_prompt force_color_prompt
 

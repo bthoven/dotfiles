@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# ~/.dotfiles/bash/bash_options
+# ~/.bash/bash_options
 # Load user-defined options
 
 # Bash won't get SIGWINCH if another process is in the foreground. Enable

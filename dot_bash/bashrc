@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 #
-# ~/.dotfiles/bash/bashrc
+# ~/.bash/bashrc
 
 # Choose if to run Powerline prompt
 export RUN_POWERLINE=false
 
 # Load dotfiles
-test -f ~/.dotfiles/bash/bash_dotfiles && . ~/.dotfiles/bash/bash_dotfiles
+test -f ~/.bash/bash_dotfiles && . ~/.bash/bash_dotfiles

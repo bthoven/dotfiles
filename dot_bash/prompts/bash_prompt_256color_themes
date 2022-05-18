@@ -3,8 +3,8 @@
 # Themes for a 256color prompt
 
 # Get color names
-if [[ -f ~/.dotfiles/bash/prompts/bash_prompt_256color_colors ]]; then
-    . ~/.dotfiles/bash/prompts/bash_prompt_256color_colors
+if [[ -f ~/.bash/prompts/bash_prompt_256color_colors ]]; then
+    . ~/.bash/prompts/bash_prompt_256color_colors
 fi
 
 __set_ps1_theme() { theme_function="__$1"; ${theme_function}; }

@@ -3,7 +3,7 @@
 # ~/.bash/bashrc
 
 # Choose if to run Powerline prompt
-export RUN_POWERLINE=false
+export RUN_POWERLINE=true
 
 # Load dotfiles
 test -f ~/.bash/bash_dotfiles && . ~/.bash/bash_dotfiles

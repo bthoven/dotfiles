@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+
+################################################################################
+# ~/.bash/functions/compress-pdf
+# Compress large PDF files using GhostScript
+# Author: Beethoven Santos
+# Created: 2022-12-23
+################################################################################
+
+# Reduces the chance for error with the pattern matching being case insensitive.
+shopt -s nocasematch
+
+# Reduce the size of a PDF file
+compress-pdf() {
+    local nargs=$#
+    local script_name=$(basename "$(readlink -f "${BASH_SOURCE}")")
+    local msg_prefix="[${script_name}]"
+    local error_msg_prefix="${msg_prefix} ERROR:"
+
+    if [[ "$nargs" == "0" ]]; then
+        echo "${error_msg_prefix} No arguments supplied."
+        return 1
+    elif [[ "$nargs" > "2" ]]; then
+        echo "${error_msg_prefix} compress-pdf expects only 2 arguments," \
+            "but ${nargs} were given."
+        return 1
+    else
+        local input=$1
+        local name="${input%%.*}"
+        local extension="${input##*.}"
+
+        # Add the PDFSETTINGS value to the output's name if this argument was
+        # supplied (not null).
+        if [[ -n "$2" ]]; then
+            case "$2" in
+                "screen" | "ebook" | "prepress" | "printer" | "default")
+                    pdfsettings=$2
+                    ;;
+                *)
+                    echo "${error_msg_prefix}" \
+                        "GhostScript's PDFSETTINGS option '$2' not recognized." \
+                        "Available options:" \
+                        "'screen', 'ebook', 'prepress', 'printer' or 'default'." \
+                        "Leave it empty to set it to 'default'."
+                    return 1
+                    ;;
+            esac
+        else
+            pdfsettings="default"
+        fi
+
+        # Create the filename of the output
+        local output="${name}__COMPRESSED-GS-PDFSETTINGS=${pdfsettings}.${extension}"
+
+        # Create the command for compression
+        cmd="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 "
+        cmd+="-dPDFSETTINGS=/${pdfsettings} -dNOPAUSE -dQUIET -dBATCH "
+        cmd+="-sOutputFile=${output} ${input}"
+
+        # Run the compression
+        echo "${msg_prefix} Compressing the file $input..."
+        echo "${msg_prefix} Command: $cmd"
+        $cmd
+
+        # Finish if the compression was successfull
+        if [[ $? == 0 ]]; then
+            echo "${msg_prefix} Compressed file written to $output."
+            echo "${msg_prefix} Done."
+            return 0
+        else
+            return 1
+        fi
+    fi
+}

@@ -5,7 +5,7 @@
 
 load_dotfiles() {
     declare -a files=(
-        ~/.bash_profile.local          # Local/private settings not under version control (e.g. git credentials)
+        ~/.bash_profile.local # Local/private settings not under version control (e.g. git credentials)
         ~/.bash/bash_options  # Options
         ~/.bash/bash_aliases  # Aliases
         ~/.bash/functions/*   # Functions

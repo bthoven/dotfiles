@@ -3,8 +3,8 @@
 # ~/.bash/functions/xtract
 
 
-# ex - archive extractor
-# usage: ex <file>
+# xtract - archive extractor
+# usage: xtract <file>
 xtract() {
     if [[ -f $1 ]]; then
         case $1 in
@@ -19,7 +19,7 @@ xtract() {
             *.zip)       unzip "$1"     ;;
             *.Z)         uncompress "$1";;
             *.7z)        7z x "$1"      ;;
-            *)           echo "'$1' cannot be extracted via ex()" ;;
+            *)           echo "'$1' cannot be extracted via xtract()" ;;
         esac
     else
         echo "'$1' is not a valid file"

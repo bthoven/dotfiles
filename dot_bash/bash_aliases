@@ -16,7 +16,7 @@ alias fgrep='fgrep -n --color=${COLORED_OUTPUT}'
 alias gpg="gpg --no-symkey-cache"
 alias grep='grep -n --color=${COLORED_OUTPUT}'
 #alias ls='ls --si --color=${COLORED_OUTPUT}'
-alias ls='exa --group-directories-first --color=${COLORED_OUTPUT}'
+alias ls='eza --group-directories-first --color=${COLORED_OUTPUT}'
 alias mv="mv -i"
 alias nano="nano -l"
 alias ping="ping -c1"
@@ -43,15 +43,15 @@ alias h="history"
 alias hist="history | grep"
 alias ir="ps aux | head -n 1; ps aux | grep"
 #alias l='ls -CF --si --color=${COLORED_OUTPUT}'
-alias l='exa -F --group-directories-first --color=${COLORED_OUTPUT}'
+alias l='eza -F --group-directories-first --color=${COLORED_OUTPUT}'
 #alias la='ls -AF --si --color=${COLORED_OUTPUT}'
-alias la='exa -aF --group-directories-first --color=${COLORED_OUTPUT}'
+alias la='eza -aF --group-directories-first --color=${COLORED_OUTPUT}'
 #alias ll='ls -hFl --si --color=${COLORED_OUTPUT}'
-alias ll='exa -FhlT -L1 --group-directories-first --git --color=${COLORED_OUTPUT}'
+alias ll='eza -FhlT -L1 --group-directories-first --git --color=${COLORED_OUTPUT}'
 #alias lla='ls -AhFl --si --color=${COLORED_OUTPUT}'
-alias lla='exa -aFhlT -L1 --group-directories-first --git --color=${COLORED_OUTPUT}'
+alias lla='eza -aFhlT -L1 --group-directories-first --git --color=${COLORED_OUTPUT}'
 alias lns="ln -s"
-alias ltt='exa -ls time --color=${COLORED_OUTPUT} | tail'
+alias ltt='eza -ls time --color=${COLORED_OUTPUT} | tail'
 # alias myip="ip a s eno1 | grep inet | head -n 1 | cut -d ' ' -f6"
 alias myip="curl ipinfo.io/ip; echo"
 #alias optirun="optirun -vv -b virtualgl -c jpeg"

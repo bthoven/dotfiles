@@ -52,15 +52,23 @@ compress-pdf() {
         # Create the filename of the output
         local output="${name}__COMPRESSED-GS-PDFSETTINGS=${pdfsettings}.${extension}"
 
+        # Create a temporary file to insert metadata to the output file
+        local pdfmarksfile="/tmp/pdfmarks"
+        echo "[ /Producer (Ghostscript options: -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/${pdfsettings} -dNOPAUSE -dQUIET -dBATCH)" > $pdfmarksfile
+        echo "  /DOCINFO pdfmark" >> $pdfmarksfile
+
         # Create the command for compression
         cmd="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 "
         cmd+="-dPDFSETTINGS=/${pdfsettings} -dNOPAUSE -dQUIET -dBATCH "
-        cmd+="-sOutputFile=${output} ${input}"
+        cmd+="-sOutputFile=${output} ${input} ${pdfmarksfile}"
 
         # Run the compression
         echo "${msg_prefix} Compressing the file $input..."
         echo "${msg_prefix} Command: $cmd"
         $cmd
+
+        # Remove the temporary metadata file
+        rm -f $pdfmarksfile
 
         # Finish if the compression was successfull
         if [[ $? == 0 ]]; then

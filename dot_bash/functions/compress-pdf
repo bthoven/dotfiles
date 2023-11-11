@@ -54,8 +54,11 @@ compress-pdf() {
 
         # Create a temporary file to insert metadata to the output file
         local pdfmarksfile="/tmp/pdfmarks"
-        echo "[ /Producer (Ghostscript options: -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/${pdfsettings} -dNOPAUSE -dQUIET -dBATCH)" > $pdfmarksfile
-        echo "  /DOCINFO pdfmark" >> $pdfmarksfile
+        local metadatainfo="[ /Description (Ghostscript options: "
+        metadatainfo+="-sDEVICE=pdfwrite -dCompatibilityLevel=1.4 "
+        metadatainfo+="-dPDFSETTINGS=/${pdfsettings} -dNOPAUSE -dQUIET "
+        metadatainfo+="-dBATCH) /DOCINFO pdfmark"
+        echo $metadatainfo > $pdfmarksfile
 
         # Create the command for compression
         cmd="gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 "

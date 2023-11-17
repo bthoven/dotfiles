@@ -5,13 +5,13 @@
 
 load_dotfiles() {
     declare -a files=(
-        ~/.bash_profile.local # Local/private settings not under version control (e.g. git credentials)
         ~/.bash/bash_options  # Options
         ~/.bash/bash_aliases  # Aliases
         ~/.bash/functions/*   # Functions
         ~/.bash/bash_user     # User environment
         ~/.bash/bash_prompt   # Custom bash prompt
         ~/.bash/bash_paths    # Path modifications
+        ~/.bash_profile.local # Local/private settings not under version control (e.g. git credentials)
     )
 
     # If these files are readable, source them

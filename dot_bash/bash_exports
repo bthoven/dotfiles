@@ -47,10 +47,10 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export PATH="${GOBIN}:${PATH}"
 
     # For MultiNest and Cuba
-    #export LD_LIBRARY_PATH=~/Programs/MultiNest/lib:~/Programs/cuba:${LD_LIBRARY_PATH}
+    #export LD_LIBRARY_PATH=~/Software/MultiNest/lib:~/Software/cuba:${LD_LIBRARY_PATH}
 
     # For Spark
-    export SPARK_HOME=~/Programs/spark
+    export SPARK_HOME=~/Software/spark
     export PATH=${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}
 
     # For npm installs. See https://github.com/npm/npm/issues/8165#issuecomment-264002075.
@@ -59,11 +59,11 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     #export PATH=~/.cargo/bin:${PATH}
 
     # For Miniconda
-    #export LD_PRELOAD=~/Programs/miniconda3/lib/libmkl_def.so:~/Programs/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}
+    #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}
 
     # For Google Cloud
-    #. ~/Programs/google-cloud-sdk/path.bash.inc  # Updates PATH for the Google Cloud SDK
-    #. ~/Programs/google-cloud-sdk/completion.bash.inc  # Enables bash completion for gcloud
+    #. ~/Software/google-cloud-sdk/path.bash.inc  # Updates PATH for the Google Cloud SDK
+    #. ~/Software/google-cloud-sdk/completion.bash.inc  # Enables bash completion for gcloud
 
 
     ###############

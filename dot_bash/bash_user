@@ -8,20 +8,20 @@
 ### Anaconda initialization ###
 ###############################
 
-anaconda_path="${HOME}/Software/miniconda3"
+__conda_path="${HOME}/Software/miniconda3"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-if ! __conda_setup="$("${anaconda_path}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"; then
+if ! __conda_setup="$("${__conda_path}/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"; then
     eval "${__conda_setup}"
 else
-    if [ -f "${anaconda_path}/etc/profile.d/conda.sh" ]; then
-        . "${anaconda_path}/etc/profile.d/conda.sh"
+    if [ -f "${__conda_path}/etc/profile.d/conda.sh" ]; then
+        . "${__conda_path}/etc/profile.d/conda.sh"
     else
-        export PATH="${anaconda_path}/bin:${PATH}"
+        export PATH="${__conda_path}/bin:${PATH}"
     fi
 fi
-unset __conda_setup anaconda_path
+unset __conda_setup __conda_path
 # <<< conda initialize <<<
 
 

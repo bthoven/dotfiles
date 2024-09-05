@@ -1,0 +1,8 @@
+[Appearance]
+Translucency=true
+
+[Dialogs]
+FirstRun=false
+
+[Window]
+Height=85

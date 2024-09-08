@@ -1,6 +1,6 @@
 channels:
-  - conda-forge
   - defaults
+  - conda-forge
 ssl_verify: true
 report_errors: true
 auto_activate_base: false

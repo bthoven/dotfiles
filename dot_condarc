@@ -6,4 +6,3 @@ report_errors: true
 auto_activate_base: false
 env_prompt: '\n({default_env}) '
 changeps1: false
-solver: classic

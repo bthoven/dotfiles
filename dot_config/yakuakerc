@@ -1,8 +1,10 @@
 [Appearance]
+TerminalHighlightOnManualActivation=true
 Translucency=true
 
 [Dialogs]
 FirstRun=false
 
 [Window]
+DynamicTabTitles=true
 Height=85

@@ -42,3 +42,10 @@ unset __conda_setup __conda_path
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
     . /etc/profile.d/vte.sh
 fi
+
+
+#######################################
+### Cargo initialization (for Rust) ###
+#######################################
+
+test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"

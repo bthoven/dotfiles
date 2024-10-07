@@ -56,6 +56,7 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export ENABLE_CUBA="${HOME}/Software/cuba"
     export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
     export ENABLE_GO='true'
+    export ENABLE_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
     export ENABLE_MULTINEST="${HOME}/Software/MultiNest"
     export ENABLE_POWERLINE='true'
     export ENABLE_SPARK="${HOME}/Software/spark"
@@ -95,10 +96,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
 
     # For Miniconda
     #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}
-
-    # For Google Cloud
-    #. ~/Software/google-cloud-sdk/path.bash.inc  # Updates PATH for the Google Cloud SDK
-    #. ~/Software/google-cloud-sdk/completion.bash.inc  # Enables bash completion for gcloud
 
     # For Flutter
     if [[ -n "${ENABLE_FLUTTER}" ]]; then

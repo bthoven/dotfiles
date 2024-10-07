@@ -74,11 +74,11 @@ fi
 
 if [[ -n "${ENABLE_GOOGLE_CLOUD_SDK}" ]]; then
     # Updates PATH for the Google Cloud SDK
-    __file_to_be_sourced_1=${ENABLE_GOOGLE_CLOUD_SDK}/path.bash.inc
+    __file_to_be_sourced_1="${ENABLE_GOOGLE_CLOUD_SDK}/path.bash.inc"
     [[ -s "${__file_to_be_sourced_1}" ]] && . "${__file_to_be_sourced_1}"
 
     # Enables bash completion for gcloud
-    __file_to_be_sourced_2=${ENABLE_GOOGLE_CLOUD_SDK}/completion.bash.inc
+    __file_to_be_sourced_2="${ENABLE_GOOGLE_CLOUD_SDK}/completion.bash.inc"
     [[ -s "${__file_to_be_sourced_2}" ]] && . "${__file_to_be_sourced_2}"
 
     unset __file_to_be_sourced_1 __file_to_be_sourced_2

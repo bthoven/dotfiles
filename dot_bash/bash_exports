@@ -41,16 +41,16 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     ### User configuration ###
     ##########################
 
-    if ! [[ "${PATH}" =~ ~/.local/bin:~/bin: ]]; then
-        export PATH=~/.local/bin:~/bin:${PATH}
+    if ! [[ "${PATH}" =~ "${HOME}/.local/bin:${HOME}/bin": ]]; then
+        export PATH="${HOME}/.local/bin:~/bin:${PATH}"
     fi
 
 
     ##########################################
     ### Variables to enable software usage ###
     ##########################################
-    # Set them to the installation path of the given software, or either to 'true'
-    # (case-insensitive) or 1 if the software was instaled system-wide.
+    # Set them to the installation path of the given software, or either to
+    # 'true' (case-insensitive) or 1 if the software was instaled system-wide.
     export ENABLE_CARGO='true'
     export ENABLE_CONDA="${HOME}/Software/miniconda3"
     export ENABLE_CUBA="${HOME}/Software/cuba"
@@ -68,7 +68,7 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     ###################################
 
     # For the Python language
-    export PYTHONPATH=~/Projects/software/python
+    export PYTHONPATH="${HOME}/Projects/software/python"
 
     # For the Go language
     if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then

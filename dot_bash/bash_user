@@ -3,17 +3,6 @@
 # ~/.bash/bash_user
 # User specific environment
 
-##########################################
-### Variables to enable software usage ###
-##########################################
-# Set them to the installation path of the given software, or either to 'true'
-# (case-insensitive) or 1 if the software was instaled system-wide.
-export ENABLE_CONDA="${HOME}/Software/miniconda3"
-export ENABLE_CARGO="${HOME}/.cargo"
-export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
-export ENABLE_POWERLINE='true'
-
-
 ###############################
 ### Anaconda initialization ###
 ###############################
@@ -69,4 +58,6 @@ fi
 ### Cargo initialization (for Rust) ###
 #######################################
 
-test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
+if [[ "${ENABLE_CARGO}" == 'true' || "${ENABLE_CARGO}" == 1 ]]; then
+    test -f "$HOME/.cargo/env" && . "$HOME/.cargo/env"
+fi

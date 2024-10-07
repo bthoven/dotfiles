@@ -46,6 +46,17 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     fi
 
 
+    ##########################################
+    ### Variables to enable software usage ###
+    ##########################################
+    # Set them to the installation path of the given software, or either to 'true'
+    # (case-insensitive) or 1 if the software was instaled system-wide.
+    export ENABLE_CONDA="${HOME}/Software/miniconda3"
+    export ENABLE_CARGO='true'
+    export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
+    export ENABLE_POWERLINE='true'
+
+
     ###################################
     ### Variables for several tools ###
     ###################################
@@ -67,8 +78,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
 
     # For npm installs. See https://github.com/npm/npm/issues/8165#issuecomment-264002075.
     #export PATH=~/.npm-global/bin:${PATH}
-
-    #export PATH=~/.cargo/bin:${PATH}
 
     # For Miniconda
     #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}

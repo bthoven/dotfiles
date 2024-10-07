@@ -12,6 +12,18 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     ### System ###
     ##############
 
+    # Ignore both spaces and duplicate commands in the history
+    export HISTCONTROL=ignoreboth  # ignorespace + ignoredup
+
+    # Increase the maximum number of lines contained in the history file, as
+    # well the maximum number of commands to remember (default is 500 for both).
+    # If you want infinite history, set them to anything < 0 (eg. -1).
+    export HISTFILESIZE=10000  # lines
+    export HISTSIZE=10000      # commands
+
+    # History format
+    export HISTTIMEFORMAT="%d/%m/%y %T "
+
     # Make the default editor
     export EDITOR="nano"
     export VISUAL="nano"
@@ -66,25 +78,9 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     #. ~/Software/google-cloud-sdk/completion.bash.inc  # Enables bash completion for gcloud
 
     # For Flutter
-    if $ACTIVATE_FLUTTER; then
-        export PATH="${HOME}/Software/development/flutter/bin:${PATH}"
+    if [[ -n "${ENABLE_FLUTTER}" ]]; then
+        export PATH="${ENABLE_FLUTTER}/bin:${PATH}"
     fi
-
-    ###############
-    ### History ###
-    ###############
-
-    # Ignore both spaces and duplicate commands in the history
-    export HISTCONTROL=ignoreboth  # ignorespace + ignoredup
-
-    # Increase the maximum number of lines contained in the history file, as
-    # well the maximum number of commands to remember (default is 500 for both).
-    # If you want infinite history, set them to anything < 0 (eg. -1).
-    export HISTFILESIZE=10000  # lines
-    export HISTSIZE=10000      # commands
-
-    # History format
-    export HISTTIMEFORMAT="%d/%m/%y %T "
 
 
     ###########################

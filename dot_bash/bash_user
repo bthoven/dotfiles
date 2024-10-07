@@ -3,6 +3,16 @@
 # ~/.bash/bash_user
 # User specific environment
 
+##########################################
+### Variables to enable software usage ###
+##########################################
+# Set them to the installation path of the given software, or either to 'true'
+# (case-insensitive) or 1 if the software was instaled system-wide.
+export ENABLE_CONDA="${HOME}/Software/miniconda3"
+export ENABLE_CARGO="${HOME}/.cargo"
+export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
+export ENABLE_POWERLINE='true'
+
 
 ###############################
 ### Anaconda initialization ###
@@ -29,7 +39,7 @@ unset __conda_setup __conda_path
 ################################
 ### For the Powerline prompt ###
 ################################
-if $ACTIVATE_POWERLINE; then
+if [[ "${ENABLE_POWERLINE}" == 'true' || "${ENABLE_POWERLINE}" == 1 ]]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1

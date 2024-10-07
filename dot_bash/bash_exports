@@ -55,6 +55,7 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export ENABLE_CARGO='true'
     export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
     export ENABLE_POWERLINE='true'
+    export ENABLE_SPARK="${HOME}/Software/spark"
 
 
     ###################################
@@ -73,8 +74,10 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     #export LD_LIBRARY_PATH=~/Software/MultiNest/lib:~/Software/cuba:${LD_LIBRARY_PATH}
 
     # For Spark
-    export SPARK_HOME=~/Software/spark
-    export PATH=${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}
+    if [[ -n "${ENABLE_SPARK}" ]]; then
+        export SPARK_HOME="${ENABLE_SPARK}"
+        export PATH="${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}"
+    fi
 
     # For npm installs. See https://github.com/npm/npm/issues/8165#issuecomment-264002075.
     #export PATH=~/.npm-global/bin:${PATH}

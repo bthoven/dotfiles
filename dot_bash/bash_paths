@@ -5,10 +5,12 @@
 # Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_paths
 
 # Directories to be prepended to PATH
-declare -a dirs_to_prepend=(
-    "${HOME}/.local/bin"
-    "${HOME}/bin"
-)
+declare -a dirs_to_prepend=()
+# Home paths
+if ! [[ "${PATH}" =~ "${HOME}/.local/bin:${HOME}/bin": ]]; then
+    dirs_to_prepend+=("${HOME}/.local/bin")
+    dirs_to_prepend+=("${HOME}/bin")
+fi
 # For the Go language
 if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then
     dirs_to_prepend+=("${GOBIN}")

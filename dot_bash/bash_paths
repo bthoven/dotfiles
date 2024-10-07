@@ -4,6 +4,8 @@
 # Load user-defined paths
 # Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_paths
 
+echo "[bash_paths]         PATH=$PATH"
+
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=()
 # Home paths
@@ -12,18 +14,20 @@ if ! [[ "${PATH}" =~ "${HOME}/.local/bin:${HOME}/bin": ]]; then
     dirs_to_prepend+=("${HOME}/bin")
 fi
 # For the Go language
-if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then
+if [[ -d "${GOBIN}" ]]; then
     dirs_to_prepend+=("${GOBIN}")
 fi
 # For Spark
-if [[ -n "${ENABLE_SPARK}" ]]; then
+if [[ -d "${SPARK_HOME}" ]]; then
     dirs_to_prepend+=("${SPARK_HOME}/bin")
     dirs_to_prepend+=("${SPARK_HOME}/sbin")
 fi
 # For Flutter
-if [[ -n "${ENABLE_FLUTTER}" ]]; then
-    dirs_to_prepend+=("${ENABLE_FLUTTER}/bin")
+if [[ -d "${INSTALLATION_FLUTTER}" ]]; then
+    dirs_to_prepend+=("${INSTALLATION_FLUTTER}/bin")
 fi
+# For npm installs. See https://github.com/npm/npm/issues/8165#issuecomment-264002075.
+# dirs_to_prepend+=("${HOME}/.npm-global/bin")
 
 # Directories to be appended to PATH
 declare -a dirs_to_append=(
@@ -51,3 +55,5 @@ done
 unset dirs_to_prepend dirs_to_append
 
 export PATH
+
+echo "                     PATH=$PATH"

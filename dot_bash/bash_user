@@ -3,12 +3,14 @@
 # ~/.bash/bash_user
 # User specific environment
 
+echo "[bash_user]          PATH=$PATH"
+
 ###############################
 ### Anaconda initialization ###
 ###############################
 
-if [[ -n "${ENABLE_CONDA}" ]]; then
-    __conda_path="${ENABLE_CONDA}"
+if [[ -d "${INSTALLATION_CONDA}" ]]; then
+    __conda_path="${INSTALLATION_CONDA}"
 
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
@@ -43,9 +45,7 @@ fi
 ### Added by Travis gem ###
 ###########################
 
-if [[ "${ENABLE_TRAVIS}" == 'true' || "${ENABLE_TRAVIS}" == 1 ]]; then
-    [[ ! -s ~/.travis/travis.sh ]] || . ~/.travis/travis.sh
-fi
+[[ ! -s ~/.travis/travis.sh ]] || . ~/.travis/travis.sh
 
 
 #######################################################################
@@ -63,22 +63,20 @@ fi
 ### Cargo initialization (for Rust) ###
 #######################################
 
-if [[ "${ENABLE_CARGO}" == 'true' || "${ENABLE_CARGO}" == 1 ]]; then
-    test -f "${HOME}/.cargo/env" && . "${HOME}/.cargo/env"
-fi
+test -f "${HOME}/.cargo/env" && . "${HOME}/.cargo/env"
 
 
 #######################################
 ### Google Cloud SDK initialization ###
 #######################################
 
-if [[ -n "${ENABLE_GOOGLE_CLOUD_SDK}" ]]; then
+if [[ -d "${INSTALLATION_GOOGLE_CLOUD_SDK}" ]]; then
     # Updates PATH for the Google Cloud SDK
-    __file_to_be_sourced_1="${ENABLE_GOOGLE_CLOUD_SDK}/path.bash.inc"
+    __file_to_be_sourced_1="${INSTALLATION_GOOGLE_CLOUD_SDK}/path.bash.inc"
     [[ -s "${__file_to_be_sourced_1}" ]] && . "${__file_to_be_sourced_1}"
 
     # Enables bash completion for gcloud
-    __file_to_be_sourced_2="${ENABLE_GOOGLE_CLOUD_SDK}/completion.bash.inc"
+    __file_to_be_sourced_2="${INSTALLATION_GOOGLE_CLOUD_SDK}/completion.bash.inc"
     [[ -s "${__file_to_be_sourced_2}" ]] && . "${__file_to_be_sourced_2}"
 
     unset __file_to_be_sourced_1 __file_to_be_sourced_2

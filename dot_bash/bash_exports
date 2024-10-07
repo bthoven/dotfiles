@@ -4,10 +4,11 @@
 # Load user-defined exports
 # Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_exports
 
-echo "BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
+echo "[bash_exports]       BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
+
 # Prevents double sourcing
 if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
-    echo "Inside ~/.bash/bash_exports if..then"
+    echo "                     Inside ~/.bash/bash_exports if..then"
     export BASH_EXPORTS_SOURCED="yes"
 
     ##############
@@ -39,26 +40,18 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     #export SYSTEMD_PAGER=
 
 
-    ##########################
-    ### User configuration ###
-    ##########################
-
-
     ##########################################
     ### Variables to enable software usage ###
     ##########################################
     # Set them to the installation path of the given software, or either to
     # 'true' (case-insensitive) or 1 if the software was instaled system-wide.
-    export ENABLE_CARGO='true'
-    export ENABLE_CONDA="${HOME}/Software/miniconda3"
-    export ENABLE_CUBA="${HOME}/Software/cuba"
-    export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
-    export ENABLE_GO='true'
-    export ENABLE_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
-    export ENABLE_MULTINEST="${HOME}/Software/MultiNest"
+    export INSTALLATION_CONDA="${HOME}/Software/miniconda3"
+    export INSTALLATION_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
+    export INSTALLATION_FLUTTER="${HOME}/Software/development/flutter"
+    export INSTALLATION_SPARK="${HOME}/Software/spark"
+    export INSTALLATION_CUBA="${HOME}/Software/cuba"
+    export INSTALLATION_MULTINEST="${HOME}/Software/MultiNest"
     export ENABLE_POWERLINE='true'
-    export ENABLE_SPARK="${HOME}/Software/spark"
-    export ENABLE_TRAVIS='false'
 
 
     ###################################
@@ -69,26 +62,21 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export PYTHONPATH="${HOME}/Projects/software/python"
 
     # For the Go language
-    if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then
-        export GOPATH="${HOME}/Projects/software/go"
-        export GOBIN="${GOPATH}/bin"
-    fi
+    export GOPATH="${HOME}/Projects/software/go"
+    export GOBIN="${GOPATH}/bin"
 
     # For MultiNest and Cuba
-    if [[ -n "${ENABLE_CUBA}" ]]; then
+    if [[ -d "${INSTALLATION_CUBA}" ]]; then
         export LD_LIBRARY_PATH="${ENABLE_CUBA}:${LD_LIBRARY_PATH}"
     fi
-    if [[ -n "${ENABLE_MULTINEST}" ]]; then
+    if [[ -d "${INSTALLATION_MULTINEST}" ]]; then
         export LD_LIBRARY_PATH="${ENABLE_MULTINEST}/lib:${LD_LIBRARY_PATH}"
     fi
 
     # For Spark
-    if [[ -n "${ENABLE_SPARK}" ]]; then
-        export SPARK_HOME="${ENABLE_SPARK}"
+    if [[ -d "${INSTALLATION_SPARK}" ]]; then
+        export SPARK_HOME="${INSTALLATION_SPARK}"
     fi
-
-    # For npm installs. See https://github.com/npm/npm/issues/8165#issuecomment-264002075.
-    #export PATH=~/.npm-global/bin:${PATH}
 
     # For Miniconda
     #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}

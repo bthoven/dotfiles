@@ -20,11 +20,13 @@ load_dotfiles() {
     done
 }
 
-echo "BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
+echo "[bash_dotfiles]      BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
+
 # Sourcing `bash_exports` before the other Bash files due to its double
 # sourcing prevention method. Tip from https://unix.stackexchange.com/a/425759.
-if [[ "${BASH_EXPORTS_SOURCED}" != "yes" && -f "${HOME}/.bash/bash_exports" ]]
-then
+# if [[ "${BASH_EXPORTS_SOURCED}" != "yes" && -f "${HOME}/.bash/bash_exports" ]]
+# then
+if [[ -f "${HOME}/.bash/bash_exports" ]]; then
     . "${HOME}/.bash/bash_exports"  # Exports
 fi
 

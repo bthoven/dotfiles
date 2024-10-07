@@ -55,6 +55,7 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export ENABLE_CONDA="${HOME}/Software/miniconda3"
     export ENABLE_CUBA="${HOME}/Software/cuba"
     export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
+    export ENABLE_GO='true'
     export ENABLE_MULTINEST="${HOME}/Software/MultiNest"
     export ENABLE_POWERLINE='true'
     export ENABLE_SPARK="${HOME}/Software/spark"
@@ -69,9 +70,11 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export PYTHONPATH=~/Projects/software/python
 
     # For the Go language
-    export GOPATH=~/Projects/software/go
-    export GOBIN="${GOPATH}/bin"
-    export PATH="${GOBIN}:${PATH}"
+    if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then
+        export GOPATH="${HOME}/Projects/software/go"
+        export GOBIN="${GOPATH}/bin"
+        export PATH="${GOBIN}:${PATH}"
+    fi
 
     # For MultiNest and Cuba
     if [[ -n "${ENABLE_CUBA}" ]]; then

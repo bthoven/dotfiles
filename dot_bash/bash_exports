@@ -65,6 +65,10 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     #. ~/Software/google-cloud-sdk/path.bash.inc  # Updates PATH for the Google Cloud SDK
     #. ~/Software/google-cloud-sdk/completion.bash.inc  # Enables bash completion for gcloud
 
+    # For Flutter
+    if $ACTIVATE_FLUTTER; then
+        export PATH="${HOME}/Software/development/flutter/bin:${PATH}"
+    fi
 
     ###############
     ### History ###

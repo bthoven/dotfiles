@@ -4,8 +4,10 @@
 # Load user-defined exports
 # Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_exports
 
+echo "BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
 # Prevents double sourcing
 if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
+    echo "Inside ~/.bash/bash_exports if..then"
     export BASH_EXPORTS_SOURCED="yes"
 
     ##############
@@ -41,10 +43,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     ### User configuration ###
     ##########################
 
-    if ! [[ "${PATH}" =~ "${HOME}/.local/bin:${HOME}/bin": ]]; then
-        export PATH="${HOME}/.local/bin:~/bin:${PATH}"
-    fi
-
 
     ##########################################
     ### Variables to enable software usage ###
@@ -74,7 +72,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then
         export GOPATH="${HOME}/Projects/software/go"
         export GOBIN="${GOPATH}/bin"
-        export PATH="${GOBIN}:${PATH}"
     fi
 
     # For MultiNest and Cuba
@@ -88,7 +85,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     # For Spark
     if [[ -n "${ENABLE_SPARK}" ]]; then
         export SPARK_HOME="${ENABLE_SPARK}"
-        export PATH="${SPARK_HOME}/bin:${SPARK_HOME}/sbin:${PATH}"
     fi
 
     # For npm installs. See https://github.com/npm/npm/issues/8165#issuecomment-264002075.
@@ -96,11 +92,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
 
     # For Miniconda
     #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}
-
-    # For Flutter
-    if [[ -n "${ENABLE_FLUTTER}" ]]; then
-        export PATH="${ENABLE_FLUTTER}/bin:${PATH}"
-    fi
 
 
     ###########################

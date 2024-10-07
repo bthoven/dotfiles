@@ -16,15 +16,16 @@ load_dotfiles() {
 
     # If these files are readable, source them
     for index in ${!files[*]}; do
-        test -r ${files[$index]} && . ${files[$index]}
+        test -r "${files[$index]}" && . "${files[$index]}"
     done
 }
 
+echo "BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
 # Sourcing `bash_exports` before the other Bash files due to its double
 # sourcing prevention method. Tip from https://unix.stackexchange.com/a/425759.
-if [[ ${BASH_EXPORTS_SOURCED} != yes && -f ~/.bash/bash_exports ]]
+if [[ "${BASH_EXPORTS_SOURCED}" != "yes" && -f "${HOME}/.bash/bash_exports" ]]
 then
-    . ~/.bash/bash_exports  # Exports
+    . "${HOME}/.bash/bash_exports"  # Exports
 fi
 
 load_dotfiles

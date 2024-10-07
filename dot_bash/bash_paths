@@ -1,0 +1,51 @@
+#!/bin/bash
+#
+# ~/.bash/bash_paths
+# Load user-defined paths
+# Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_paths
+
+# Directories to be prepended to PATH
+declare -a dirs_to_prepend=(
+    "${HOME}/.local/bin"
+    "${HOME}/bin"
+)
+# For the Go language
+if [[ "${ENABLE_GO}" == 'true' || "${ENABLE_GO}" == 1 ]]; then
+    dirs_to_prepend+=("${GOBIN}")
+fi
+# For Spark
+if [[ -n "${ENABLE_SPARK}" ]]; then
+    dirs_to_prepend+=("${SPARK_HOME}/bin")
+    dirs_to_prepend+=("${SPARK_HOME}/sbin")
+fi
+# For Flutter
+if [[ -n "${ENABLE_FLUTTER}" ]]; then
+    dirs_to_prepend+=("${ENABLE_FLUTTER}/bin")
+fi
+
+# Directories to be appended to PATH
+declare -a dirs_to_append=(
+    # "{$HOME}/.dotfiles/bin"
+)
+
+# Prepend directories to PATH
+for index in ${!dirs_to_prepend[*]}
+do
+    if [ -d ${dirs_to_prepend[$index]} ]; then
+        # If these directories exist, then prepend them to existing PATH
+        PATH="${dirs_to_prepend[$index]}:${PATH}"
+    fi
+done
+
+# Append directories to PATH
+for index in ${!dirs_to_append[*]}
+do
+    if [ -d ${dirs_to_append[$index]} ]; then
+        # If these bins exist, then append them to existing PATH
+        PATH="${PATH}:${dirs_to_append[$index]}"
+    fi
+done
+
+unset dirs_to_prepend dirs_to_append
+
+export PATH

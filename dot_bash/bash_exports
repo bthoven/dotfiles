@@ -56,6 +56,7 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
     export ENABLE_POWERLINE='true'
     export ENABLE_SPARK="${HOME}/Software/spark"
+    export ENABLE_TRAVIS='false'
 
 
     ###################################

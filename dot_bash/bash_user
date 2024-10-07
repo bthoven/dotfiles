@@ -28,6 +28,7 @@ unset __conda_setup __conda_path
 ################################
 ### For the Powerline prompt ###
 ################################
+
 if [[ "${ENABLE_POWERLINE}" == 'true' || "${ENABLE_POWERLINE}" == 1 ]]; then
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
@@ -40,7 +41,9 @@ fi
 ### Added by Travis gem ###
 ###########################
 
-[[ ! -s ~/.travis/travis.sh ]] || . ~/.travis/travis.sh
+if [[ "${ENABLE_TRAVIS}" == 'true' || "${ENABLE_TRAVIS}" == 1 ]]; then
+    [[ ! -s ~/.travis/travis.sh ]] || . ~/.travis/travis.sh
+fi
 
 
 #######################################################################

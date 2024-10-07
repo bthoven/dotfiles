@@ -51,9 +51,11 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     ##########################################
     # Set them to the installation path of the given software, or either to 'true'
     # (case-insensitive) or 1 if the software was instaled system-wide.
-    export ENABLE_CONDA="${HOME}/Software/miniconda3"
     export ENABLE_CARGO='true'
+    export ENABLE_CONDA="${HOME}/Software/miniconda3"
+    export ENABLE_CUBA="${HOME}/Software/cuba"
     export ENABLE_FLUTTER="${HOME}/Software/development/flutter"
+    export ENABLE_MULTINEST="${HOME}/Software/MultiNest"
     export ENABLE_POWERLINE='true'
     export ENABLE_SPARK="${HOME}/Software/spark"
     export ENABLE_TRAVIS='false'
@@ -72,7 +74,12 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
     export PATH="${GOBIN}:${PATH}"
 
     # For MultiNest and Cuba
-    #export LD_LIBRARY_PATH=~/Software/MultiNest/lib:~/Software/cuba:${LD_LIBRARY_PATH}
+    if [[ -n "${ENABLE_CUBA}" ]]; then
+        export LD_LIBRARY_PATH="${ENABLE_CUBA}:${LD_LIBRARY_PATH}"
+    fi
+    if [[ -n "${ENABLE_MULTINEST}" ]]; then
+        export LD_LIBRARY_PATH="${ENABLE_MULTINEST}/lib:${LD_LIBRARY_PATH}"
+    fi
 
     # For Spark
     if [[ -n "${ENABLE_SPARK}" ]]; then

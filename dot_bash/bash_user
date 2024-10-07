@@ -8,19 +8,21 @@
 ###############################
 
 if [[ -n "${ENABLE_CONDA}" ]]; then
+    __conda_path="${ENABLE_CONDA}"
+
     # >>> conda initialize >>>
     # !! Contents within this block are managed by 'conda init' !!
-    __conda_setup="$('${ENABLE_CONDA}/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    __conda_setup="$('${__conda_path}/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
-        if [ -f "${ENABLE_CONDA}/etc/profile.d/conda.sh" ]; then
-            . "${ENABLE_CONDA}/etc/profile.d/conda.sh"
+        if [ -f "${__conda_path}/etc/profile.d/conda.sh" ]; then
+            . "${__conda_path}/etc/profile.d/conda.sh"
         else
-            export PATH="${ENABLE_CONDA}/bin:${PATH}"
+            export PATH="${__conda_path}/bin:${PATH}"
         fi
     fi
-    unset __conda_setup
+    unset __conda_setup __conda_path
     # <<< conda initialize <<<
 fi
 

@@ -4,66 +4,87 @@
 # Load user-defined exports
 # Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_exports
 
-echo "[bash_exports]       BASH_EXPORTS_SOURCED=$BASH_EXPORTS_SOURCED"
+##############
+### System ###
+##############
 
-# Prevents double sourcing
+# Ignore both spaces and duplicate commands in the history
+export HISTCONTROL=ignoreboth  # ignorespace + ignoredup
+
+# Increase the maximum number of lines contained in the history file, as
+# well the maximum number of commands to remember (default is 500 for both).
+# If you want infinite history, set them to anything < 0 (eg. -1).
+export HISTFILESIZE=10000  # lines
+export HISTSIZE=10000      # commands
+
+# History format
+export HISTTIMEFORMAT="%d/%m/%y %T "
+
+# Make the default editor
+export EDITOR="nano"
+export VISUAL="nano"
+
+# Make new shells get the history lines from all previous shells instead of
+# the default "last window closed" history.
+export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
+
+# Uncomment the following line if you don't like systemctl's auto-paging
+# feature:
+#export SYSTEMD_PAGER=
+
+
+##########################################
+### Variables to enable software usage ###
+##########################################
+# Set them to the installation path of the given software, or either to
+# 'true' (case-insensitive) or 1 if the software was instaled system-wide.
+export INSTALLATION_CONDA="${HOME}/Software/miniconda3"
+export INSTALLATION_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
+export INSTALLATION_FLUTTER="${HOME}/Software/development/flutter"
+export INSTALLATION_SPARK="${HOME}/Software/spark"
+export INSTALLATION_CUBA="${HOME}/Software/cuba"
+export INSTALLATION_MULTINEST="${HOME}/Software/MultiNest"
+export ENABLE_POWERLINE='true'
+
+
+###################################
+### Variables for several tools ###
+###################################
+
+# For the Python language
+export PYTHONPATH="${HOME}/Projects/software/python"
+
+# For the Go language
+export GOPATH="${HOME}/Projects/software/go"
+export GOBIN="${GOPATH}/bin"
+
+# For Spark
+if [[ -d "${INSTALLATION_SPARK}" ]]; then
+    export SPARK_HOME="${INSTALLATION_SPARK}"
+fi
+
+
+###########################
+### Setup in Manjaro OS ###
+###########################
+
+# From .profile
+#export QT_QPA_PLATFORMTHEME="qt5ct"
+#export EDITOR=/usr/bin/nano
+
+# From .bashrc
+#export QT_SELECT=4
+
+
+################################
+### Prevents double sourcing ###
+################################
 if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
-    echo "                     Inside ~/.bash/bash_exports if..then"
     export BASH_EXPORTS_SOURCED="yes"
-
-    ##############
-    ### System ###
-    ##############
-
-    # Ignore both spaces and duplicate commands in the history
-    export HISTCONTROL=ignoreboth  # ignorespace + ignoredup
-
-    # Increase the maximum number of lines contained in the history file, as
-    # well the maximum number of commands to remember (default is 500 for both).
-    # If you want infinite history, set them to anything < 0 (eg. -1).
-    export HISTFILESIZE=10000  # lines
-    export HISTSIZE=10000      # commands
-
-    # History format
-    export HISTTIMEFORMAT="%d/%m/%y %T "
-
-    # Make the default editor
-    export EDITOR="nano"
-    export VISUAL="nano"
-
-    # Make new shells get the history lines from all previous shells instead of
-    # the default "last window closed" history.
-    export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
-
-    # Uncomment the following line if you don't like systemctl's auto-paging
-    # feature:
-    #export SYSTEMD_PAGER=
-
-
-    ##########################################
-    ### Variables to enable software usage ###
-    ##########################################
-    # Set them to the installation path of the given software, or either to
-    # 'true' (case-insensitive) or 1 if the software was instaled system-wide.
-    export INSTALLATION_CONDA="${HOME}/Software/miniconda3"
-    export INSTALLATION_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
-    export INSTALLATION_FLUTTER="${HOME}/Software/development/flutter"
-    export INSTALLATION_SPARK="${HOME}/Software/spark"
-    export INSTALLATION_CUBA="${HOME}/Software/cuba"
-    export INSTALLATION_MULTINEST="${HOME}/Software/MultiNest"
-    export ENABLE_POWERLINE='true'
-
 
     ###################################
     ### Variables for several tools ###
     ###################################
-
-    # For the Python language
-    export PYTHONPATH="${HOME}/Projects/software/python"
-
-    # For the Go language
-    export GOPATH="${HOME}/Projects/software/go"
-    export GOBIN="${GOPATH}/bin"
 
     # For MultiNest and Cuba
     if [[ -d "${INSTALLATION_CUBA}" ]]; then
@@ -73,23 +94,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
         export LD_LIBRARY_PATH="${ENABLE_MULTINEST}/lib:${LD_LIBRARY_PATH}"
     fi
 
-    # For Spark
-    if [[ -d "${INSTALLATION_SPARK}" ]]; then
-        export SPARK_HOME="${INSTALLATION_SPARK}"
-    fi
-
     # For Miniconda
     #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}
-
-
-    ###########################
-    ### Setup in Manjaro OS ###
-    ###########################
-
-    # From .profile
-    #export QT_QPA_PLATFORMTHEME="qt5ct"
-    #export EDITOR=/usr/bin/nano
-
-    # From .bashrc
-    #export QT_SELECT=4
 fi

@@ -4,8 +4,6 @@
 # Load user-defined paths
 # Based on: https://github.com/necolas/dotfiles/blob/master/shell/bash_paths
 
-echo "[bash_paths]         PATH=$PATH"
-
 # Directories to be prepended to PATH
 declare -a dirs_to_prepend=()
 # Home paths
@@ -35,25 +33,27 @@ declare -a dirs_to_append=(
 )
 
 # Prepend directories to PATH
-for index in ${!dirs_to_prepend[*]}
-do
-    if [ -d ${dirs_to_prepend[$index]} ]; then
-        # If these directories exist, then prepend them to existing PATH
-        PATH="${dirs_to_prepend[$index]}:${PATH}"
+for index in ${!dirs_to_prepend[*]}; do
+    entry=${dirs_to_prepend[$index]}
+    # If the directory is not in PATH yet and the directory exist, then prepend
+    # it to existing PATH
+    # (see https://forums.opensuse.org/t/bashrc-sourced-twice/139123/3).
+    if [[ :$PATH: != *:$entry:* && -d "${entry}" ]]; then
+        PATH="${entry}:${PATH}"
     fi
 done
 
 # Append directories to PATH
-for index in ${!dirs_to_append[*]}
-do
-    if [ -d ${dirs_to_append[$index]} ]; then
-        # If these bins exist, then append them to existing PATH
-        PATH="${PATH}:${dirs_to_append[$index]}"
+for index in ${!dirs_to_append[*]}; do
+    entry=${dirs_to_append[$index]}
+    # If the directory is not in PATH yet and the directory exist, then append
+    # it to existing PATH
+    # (see https://forums.opensuse.org/t/bashrc-sourced-twice/139123/3).
+    if [[ :$PATH: != *:$entry:* && -d "${entry}" ]]; then
+        PATH="${PATH}:${entry}"
     fi
 done
 
-unset dirs_to_prepend dirs_to_append
+unset dirs_to_prepend dirs_to_append entry
 
 export PATH
-
-echo "                     PATH=$PATH"

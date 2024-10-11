@@ -3,8 +3,6 @@
 # ~/.bash/bash_user
 # User specific environment
 
-echo "[bash_user]          PATH=$PATH"
-
 ###############################
 ### Anaconda initialization ###
 ###############################
@@ -21,7 +19,11 @@ if [[ -d "${INSTALLATION_CONDA}" ]]; then
         if [ -f "${__conda_path}/etc/profile.d/conda.sh" ]; then
             . "${__conda_path}/etc/profile.d/conda.sh"
         else
-            export PATH="${__conda_path}/bin:${PATH}"
+            # Prevents double insertion
+            # (see https://forums.opensuse.org/t/bashrc-sourced-twice/139123/3)
+            if [[ :$PATH: != *:${__conda_path}/bin:* ]]; then
+                export PATH="${__conda_path}/bin:${PATH}"
+            fi
         fi
     fi
     unset __conda_setup __conda_path

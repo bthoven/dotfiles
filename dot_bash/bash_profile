@@ -2,6 +2,4 @@
 #
 # ~/.bash/bash_profile
 
-echo "[bash_profile]       PATH=$PATH"
-
 test -f ~/.bash/bashrc && . ~/.bash/bashrc

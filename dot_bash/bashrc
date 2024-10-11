@@ -2,7 +2,5 @@
 #
 # ~/.bash/bashrc
 
-echo "[bashrc]             PATH=$PATH"
-
 # Load dotfiles
 test -f ~/.bash/bash_dotfiles && . ~/.bash/bash_dotfiles

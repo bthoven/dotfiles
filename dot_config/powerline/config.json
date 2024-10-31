@@ -1,0 +1,26 @@
+{
+	"common": {
+		"term_truecolor": "auto"
+	},
+	"ext": {
+		"ipython": {
+			"colorscheme": "default"
+		},
+		"pdb": {
+			"colorscheme": "default"
+		},
+		"shell": {
+			"colorscheme": "default",
+			"theme": "default_leftonly"
+		},
+		"tmux": {
+			"colorscheme": "default"
+		},
+		"vim": {
+			"colorscheme": "default"
+		},
+		"wm": {
+			"colorscheme": "default"
+		}
+	}
+}

@@ -38,7 +38,7 @@ export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 ##########################################
 # Set them to the installation path of the given software, or either to
 # 'true' (case-insensitive) or 1 if the software was instaled system-wide.
-export INSTALLATION_CONDA="${HOME}/Software/miniconda3"
+export INSTALLATION_CONDA="${HOME}/Software/miniforge3"
 export INSTALLATION_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
 export INSTALLATION_FLUTTER="${HOME}/Software/development/flutter"
 export INSTALLATION_SPARK="${HOME}/Software/spark"
@@ -94,6 +94,6 @@ if [[ -z "$BASH_EXPORTS_SOURCED" ]]; then
         export LD_LIBRARY_PATH="${ENABLE_MULTINEST}/lib:${LD_LIBRARY_PATH}"
     fi
 
-    # For Miniconda
-    #export LD_PRELOAD=~/Software/miniconda3/lib/libmkl_def.so:~/Software/miniconda3/lib/libmkl_avx2.so:${LD_PRELOAD}
+    # For Miniconda/Miniforge
+    #export LD_PRELOAD=${INSTALLATION_CONDA}/lib/libmkl_def.so:${INSTALLATION_CONDA}/lib/libmkl_avx2.so:${LD_PRELOAD}
 fi

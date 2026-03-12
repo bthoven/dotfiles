@@ -15,13 +15,12 @@ alias egrep='egrep -n --color=${COLORED_OUTPUT}'
 alias fgrep='fgrep -n --color=${COLORED_OUTPUT}'
 alias gpg="gpg --no-symkey-cache"
 alias grep='grep -n --color=${COLORED_OUTPUT}'
-#alias ls='ls --si --color=${COLORED_OUTPUT}'
-alias ls='eza --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
 alias mv="mv -i"
 alias nano="nano -l"
+command -v optirun > /dev/null 2>&1 && alias optirun="optirun -vv -b virtualgl -c jpeg"
 alias ping="ping -c1"
-# alias r="radian"
-alias radeontop="radeontop -c -T"
+command -v radeontop > /dev/null 2>&1 && alias radeontop="radeontop -c -T"
+command -v radian > /dev/null 2>&1 && alias r="radian"
 alias rm="rm -i"
 alias sudo="sudo "  # Allow aliases to be with sudo
 
@@ -33,7 +32,7 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ~="cd ~"
 alias -- -="cd -"
-alias colablocal="jupyter-lab --NotebookApp.allow_origin='https://colab.research.google.com' --port=8888 --NotebookApp.port_retries=0"
+command -v jupyter-lab > /dev/null 2>&1 && alias colablocal="jupyter-lab --NotebookApp.allow_origin='https://colab.research.google.com' --port=8888 --NotebookApp.port_retries=0"
 alias conda-act="conda activate"
 alias conda-deact="conda deactivate"
 alias dfshort="df -Ht ext4"
@@ -42,18 +41,24 @@ alias fm="free -htw --si"
 alias h="history"
 alias hist="history | grep"
 alias ir="ps aux | head -n 1; ps aux | grep"
-#alias l='ls -CF --si --color=${COLORED_OUTPUT}'
-alias l='eza --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
-#alias la='ls -AF --si --color=${COLORED_OUTPUT}'
-alias la='eza -a --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
-#alias ll='ls -hFl --si --color=${COLORED_OUTPUT}'
-alias ll='eza -hlT -L1 --classify=always --group-directories-first --git --color=${COLORED_OUTPUT}'
-#alias lla='ls -AhFl --si --color=${COLORED_OUTPUT}'
-alias lla='eza -ahlT -L1 --classify=always --group-directories-first --git --color=${COLORED_OUTPUT}'
 alias lns="ln -s"
-alias ltt='eza -l --sort=time --classify=always --color=${COLORED_OUTPUT} | tail'
+alias mamba-act="mamba activate"
+alias mamba-deact="mamba deactivate"
 # alias myip="ip a s eno1 | grep inet | head -n 1 | cut -d ' ' -f6"
 alias myip="curl ipinfo.io/ip; echo"
-#alias optirun="optirun -vv -b virtualgl -c jpeg"
 alias paths='echo ${PATH} | tr ":" "\n"'
 alias suc="su -c"
+if [[ command -v starship > /dev/null 2>&1 ]]; then
+    alias ls='eza --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
+    alias l='eza --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
+    alias la='eza -a --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
+    alias ll='eza -hlT -L1 --classify=always --group-directories-first --git --color=${COLORED_OUTPUT}'
+    alias lla='eza -ahlT -L1 --classify=always --group-directories-first --git --color=${COLORED_OUTPUT}'
+    alias ltt='eza -l --sort=time --classify=always --color=${COLORED_OUTPUT} | tail'
+else
+    alias ls='ls --si --color=${COLORED_OUTPUT}'
+    alias l='ls -CF --si --color=${COLORED_OUTPUT}'
+    alias la='ls -AF --si --color=${COLORED_OUTPUT}'
+    alias ll='ls -hFl --si --color=${COLORED_OUTPUT}'
+    alias lla='ls -AhFl --si --color=${COLORED_OUTPUT}'
+fi

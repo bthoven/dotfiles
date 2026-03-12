@@ -48,7 +48,7 @@ alias mamba-deact="mamba deactivate"
 alias myip="curl ipinfo.io/ip; echo"
 alias paths='echo ${PATH} | tr ":" "\n"'
 alias suc="su -c"
-if [[ command -v starship > /dev/null 2>&1 ]]; then
+if command -v starship > /dev/null 2>&1; then
     alias ls='eza --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
     alias l='eza --classify=always --group-directories-first --color=${COLORED_OUTPUT}'
     alias la='eza -a --classify=always --group-directories-first --color=${COLORED_OUTPUT}'

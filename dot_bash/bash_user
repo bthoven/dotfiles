@@ -31,18 +31,6 @@ if [[ -d "${INSTALLATION_CONDA}" ]]; then
 fi
 
 
-################################
-### For the Powerline prompt ###
-################################
-
-if [[ "${ENABLE_POWERLINE}" == 'true' || "${ENABLE_POWERLINE}" == 1 ]]; then
-    powerline-daemon -q
-    POWERLINE_BASH_CONTINUATION=1
-    POWERLINE_BASH_SELECT=1
-    . /usr/share/powerline/bash/powerline.sh
-fi
-
-
 ###########################
 ### Added by Travis gem ###
 ###########################
@@ -83,3 +71,10 @@ if [[ -d "${INSTALLATION_GOOGLE_CLOUD_SDK}" ]]; then
 
     unset __file_to_be_sourced_1 __file_to_be_sourced_2
 fi
+
+
+##################################################
+### Starship Cross-Shell Prompt initialization ###
+##################################################
+
+command -v starship > /dev/null 2>&1 && eval "$(starship init bash)"

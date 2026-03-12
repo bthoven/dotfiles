@@ -44,7 +44,6 @@ export INSTALLATION_FLUTTER="${HOME}/Software/development/flutter"
 export INSTALLATION_SPARK="${HOME}/Software/spark"
 export INSTALLATION_CUBA="${HOME}/Software/cuba"
 export INSTALLATION_MULTINEST="${HOME}/Software/MultiNest"
-export ENABLE_POWERLINE='true'
 
 
 ###################################

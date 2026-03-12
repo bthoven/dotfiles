@@ -39,6 +39,7 @@ export PROMPT_COMMAND="history -a; ${PROMPT_COMMAND}"
 # Set them to the installation path of the given software, or either to
 # 'true' (case-insensitive) or 1 if the software was instaled system-wide.
 export INSTALLATION_CONDA="${HOME}/Software/miniforge3"
+export INSTALLATION_MAMBA="${HOME}/Software/miniforge3"
 export INSTALLATION_GOOGLE_CLOUD_SDK="${HOME}/Software/google-cloud-sdk"
 export INSTALLATION_FLUTTER="${HOME}/Software/development/flutter"
 export INSTALLATION_SPARK="${HOME}/Software/spark"

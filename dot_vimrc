@@ -2,9 +2,6 @@ syntax on
 set shiftwidth=4 softtabstop=4 expandtab
 set autoindent
 
-" For Kite (added by thoven at 2022-02-03)
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
-
 " For Powerline (added by thoven at 2022-02-03)
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()

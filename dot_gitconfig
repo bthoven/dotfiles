@@ -1,4 +1,15 @@
 [user]
-	name = Beethoven Santos
-	email = thovensantos@gmail.com
-	username = bthoven
+    email = thovensantos@gmail.com
+    name = Beethoven Santos
+    username = bthoven
+[init]
+    defaultBranch = main
+[filter "lfs"]
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+[trailer "changeid"]
+    key = Change-Id
+[color]
+    ui = auto
